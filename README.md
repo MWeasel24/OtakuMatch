@@ -1,8 +1,11 @@
 # OtakuMatch – Sistema de Recomendação com Filtragem Colaborativa
 
-# Equipe: Daniel Nazário, Matheus Martins
-# Tecnologias: Streamlit (frontend), FastAPI (backend)
-# Dataset (Renomear os datasets para Anime.csv e Ratings.cvs e colocar na pasta data):
+Equipe: Daniel Nazário, Matheus Martins
+
+Tecnologias: Streamlit (frontend), FastAPI (backend)
+
+Dataset (Renomear os datasets para Anime.csv e Ratings.cvs e colocar na pasta data):
+
 https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database
 
 # OBJETIVO DO SISTEMA
@@ -16,25 +19,28 @@ O sistema permite:
 
 # CENÁRIO DE USO
 Recomendações de animes.
+
 Usuários avaliam animes que já assistiram; a partir das preferências coletivas, o sistema sugere novos títulos semelhantes ao gosto do usuário.
+
 Justificativa: catálogos grandes tornam difícil a descoberta; recomendações colaborativas reduzem o esforço e aumentam a satisfação ao indicar títulos relevantes.
 
 # COMO RODAR
-1. Criar um ambiente virtual(Opcional)
-python -m venv .venv && source .venv/bin/activate  # Linux/Mac
-python -m venv .venv && .venv\Scripts\activate     # Windows
+1. Criar um ambiente virtual (Opcional)
+
+- python -m venv .venv && source .venv/bin/activate  # Linux/Mac
+- python -m venv .venv && .venv\Scripts\activate     # Windows
 
 2. Instalar dependências
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
-3. Baixar capas(opicional)
-python tools/fetch_images.py --csv data/Anime.csv --out data/images --workers 4
+3. Baixar capas (Opcional)
+- python tools/fetch_images.py --csv data/Anime.csv --out data/images --workers 4
 
 4. Backend (FastAPI)
-uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
+- uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 
 5. Frontend (Streamlit)
-streamlit run frontend/streamlit_app.py
+- streamlit run frontend/streamlit_app.py
 
 # ALGORITMO DE RECOMENDAÇÃO
 Filtragem colaborativa baseada em itens (item-based) com similaridade cosseno em matriz esparsa:
@@ -55,11 +61,13 @@ Procedimento (por usuário):
 - Acurácia = acertos / K (exibida no app em decimal).
 
 A tela Análise permite ajustar Top-K e limiar e mostra acertos / recomendações / acurácia.
-* Observação: O objetivo não é focar em um único gênero, e sim em itens que o usuário provavelmente vai gostar com base em seu histórico.
+
+Observação: O objetivo não é focar em um único gênero, e sim em itens que o usuário provavelmente vai gostar com base em seu histórico.
 
 # RESULTADO (Com 30 animes avaliados)
-Usuário: Action
-Senha: 123
+
+- Usuário: Action
+- Senha: 123
 
 | Top-K | Limiar (≥)  | Acertos | Recomendações  | Acurácia    |
 |------:|------------:|--------:|---------------:|------------:|
