@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pandas
+numpy
+scipy
+scikit-learn
+requests==2.32.3
+pydantic==2.9.2
+python-multipart==0.0.12
+streamlit==1.38.0
